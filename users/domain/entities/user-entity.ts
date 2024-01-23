@@ -22,5 +22,21 @@ export class UserEntity {
       return false;
     }
   }
+
+  getId(): string {
+    return this.id;
+  }
+
+  getName(): string {
+    return this.name.getValue();
+  }
+
+  getMail(): string {
+    return this.mail.getValue();
+  }
+
+  getPassword(): string {
+    return this.passw.getValue();
+  }
 }
 

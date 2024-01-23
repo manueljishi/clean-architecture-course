@@ -1,11 +1,15 @@
 export class GeneralValueObject<T> {
-  constructor(private value: unknown){}
+  constructor(private value: string){}
   equals(ob: T){
     if(typeof ob === typeof this && JSON.stringify(ob) === JSON.stringify(this)){
       return true;
     }else{
       return false;
     }
+  }
+
+  getValue(): string {
+    return this.value;
   }
 }
 
