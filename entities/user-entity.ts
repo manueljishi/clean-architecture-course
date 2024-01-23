@@ -5,9 +5,9 @@ export class UserEntity {
   private name: NameValueObject;
   private mail: MailValueObject;
   private passw: PasswordValueObject;
-  constructor(name, mail, passw) {
+  constructor(name: string, mail: string, passw: string, id: string) {
     try {
-      this.id = crypto.randomUUID();
+      this.id = id || crypto.randomUUID();
       this.name = new NameValueObject(name);
       this.mail = new MailValueObject(mail);
       this.passw = new PasswordValueObject(passw);

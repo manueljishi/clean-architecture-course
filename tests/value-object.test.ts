@@ -36,4 +36,9 @@ describe('Value object', () => {
   test("it should correct password", () => {
     expect(()=> new PasswordValueObject('aaaaa')).toThrow("Password have to contain one letter and one number");
   })
+  test("equal passwords must return true on compare", ()=> {
+    const pass1 = new PasswordValueObject("Hola1234");
+    const pass2 = new PasswordValueObject("Hola1234");
+    expect(pass1.equals(pass2)).toBeTruthy();
+  })
 });
