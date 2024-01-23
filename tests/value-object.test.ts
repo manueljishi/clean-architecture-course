@@ -1,4 +1,4 @@
-import { NameValueObject, MailValueObject, PasswordValueObject } from "../entities/value-object"
+import { NameValueObject, MailValueObject, PasswordValueObject } from "../users/domain/entities/value-object"
 
 describe('Value object', () => {
   test('Name value object is equal', () => {

@@ -1,5 +1,5 @@
-import { UserEntity } from "../entities/user-entity"
-import { NameValueObject, MailValueObject, PasswordValueObject } from "../entities/value-object"
+import { UserEntity } from "../users/domain/entities/user-entity"
+import { NameValueObject, MailValueObject, PasswordValueObject } from "../users/domain/entities/value-object"
 describe('User entity tests', ()=> {
 	test('users should be equal with same id', ()=> {
 		const user1 = new UserEntity('Pepe', 'test@test.com', 'Hola1234', '123-123')
