@@ -17,7 +17,6 @@ export class NameValueObject extends GeneralValueObject<NameValueObject> {
   constructor(name) {
     if (name !== undefined || name !== null) {
       super(name)
-
     } else {
       throw new Error('User name must not be empty');
     }

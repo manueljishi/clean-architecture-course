@@ -4,6 +4,7 @@
   "description": "Curso de clean architecture",
   "main": "main.js",
   "scripts": {
+    "start": "tsc &&  node dist/index.js",
     "test": "jest"
   },
   "author": "Ruben, Manel",

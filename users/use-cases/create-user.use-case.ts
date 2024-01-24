@@ -1,9 +1,18 @@
-import { UserEntity } from "users/domain/entities/user-entity";
-import UsersRepository from "users/infrastructure/users.repository";
+import { UserEntity } from "../domain/entities/user-entity";
+import IUsersRepository from "../infrastructure/users.repository.interface";
 export class CreateUser {
-  private repo = new UsersRepository;
+  private repo: IUsersRepository;
+
+  constructor(repo: IUsersRepository){
+    this.repo = repo
+  }
 
   createUser(user: UserEntity): void {
-    this.repo.createNewUser(user);
+    const userFound = this.repo.findUserByEmail(user.getMail());
+    if(userFound){
+      throw new Error(`User with ${user.getMail()} already exists`);
+    }else{
+      this.repo.createNewUser(user);
+    }
   }
 }

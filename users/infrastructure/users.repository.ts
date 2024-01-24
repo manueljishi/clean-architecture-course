@@ -1,32 +1,38 @@
-import { UserModel } from "users/domain/models/user.model";
+import { UserModel } from "../domain/models/user.model";
 import IUsersRepository from "./users.repository.interface";
-import { UserEntity } from "users/domain/entities/user-entity";
+import { UserEntity } from "../domain/entities/user-entity";
 
 export default  class UsersRepository implements IUsersRepository {
-  public userList: UserModel[];
+  public userList: UserModel[] = [];
 
-  createNewUser(userEntity: UserEntity): UserEntity {
+
+  findUserByEmail(email: string): UserEntity {
+    const duplicateMail = this.userList.find((user) => user.email === email);
+    if(duplicateMail){
+      return new UserEntity(duplicateMail.name, duplicateMail.email, duplicateMail.password, duplicateMail.id)
+    }
+    
+  }
+
+  createNewUser(userEntity: UserEntity): void {
     const user: UserModel = {
       id: userEntity.getId(),
       name: userEntity.getName(),
       email: userEntity.getMail(),
       password: userEntity.getPassword(),
     }
-    const duplicateMail = this.userList.find((user) => user.email === userEntity.getMail());
+    this.userList.push(user);
+    
 
-    if(!duplicateMail) {
-      this.userList.push(user);
-      return userEntity;
-    } else {
-      throw new Error("User mail is alredy register.");
-    }
+    console.log(this)
   }
 
   getListUsers(): UserEntity[] {
     const newUserList = this.userList.map((user) => {
-      return new UserEntity(user.id, user.name, user.email, user.password);
+      return new UserEntity(user.name, user.email, user.password, user.id);
     })
 
+    console.log(this)
     return newUserList;
   }
 
